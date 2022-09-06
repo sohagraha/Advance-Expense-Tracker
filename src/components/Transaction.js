@@ -9,12 +9,11 @@ const Transaction = ({ transaction }) => {
     const dispatch = useDispatch();
     const { name, type, amount, id } = transaction || {};
 
-    const handleDelete = (id) => {
+    const handleDelete = () => {
         dispatch(removeTransaction(id));
     }
 
     const handleEdit = () => {
-        alert('Edit');
         dispatch(editActive(transaction))
     }
 
