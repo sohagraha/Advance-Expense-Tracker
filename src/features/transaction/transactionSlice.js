@@ -122,3 +122,4 @@ const transactionSlice = createSlice({
 });
 
 export default transactionSlice.reducer;
+export { fetchTransactions, changeTransaction, createTransaction, removeTransaction };

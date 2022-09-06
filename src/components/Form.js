@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createTransaction } from '../features/transaction/transactionSlice';
 
 const Form = () => {
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [amount, setAmount] = useState('');
+    const dispatch = useDispatch();
+    const state = useSelector(state => state.transaction);
+    const { isLoading, isError } = state;
 
     const handleCreate = (e) => {
         e.preventDefault();
+        dispatch(createTransaction(
+            {
+                name,
+                type,
+                amount: parseInt(amount)
+            }
+        ))
     }
     return (
         <div className="form">
@@ -14,7 +26,7 @@ const Form = () => {
             <form onSubmit={handleCreate}>
                 <div className="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" placeholder="Enter title"
+                    <input required type="text" name="name" placeholder="Enter title"
                         value={name} onChange={(e) => setName(e.target.value)}
                     />
                 </div>
@@ -23,16 +35,18 @@ const Form = () => {
                     <label>Type</label>
                     <div className="radio_group">
                         <input
+                            required
                             type="radio"
                             value="income"
                             name="type"
                             checked={type === 'income'}
                             onChange={(e) => setType('income')}
                         />
-                        <label f>Income</label>
+                        <label>Income</label>
                     </div>
                     <div className="radio_group">
                         <input type="radio"
+                            required
                             value="expense"
                             name="type"
                             checked={type === 'expense'}
@@ -49,10 +63,12 @@ const Form = () => {
                     />
                 </div>
 
-                <button className="btn" type='submit'>Add Transaction</button>
-
-                <button className="btn cancel_edit">Cancel Edit</button>
+                <button disabled={isLoading} className="btn" type='submit'>Add Transaction</button>
+                {
+                    isError ? <p className="error">There is an error</p> : null
+                }
             </form>
+            <button className="btn cancel_edit">Cancel Edit</button>
         </div>
     );
 };
