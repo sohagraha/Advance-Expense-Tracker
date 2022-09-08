@@ -6,7 +6,7 @@ const initialState = {
     isLoading: false,
     error: null,
     isError: false,
-    editActive: {}
+    editActive: {},
 };
 
 
@@ -14,8 +14,8 @@ const initialState = {
 
 export const fetchTransactions = createAsyncThunk(
     'transaction/fetchTransactions',
-    async () => {
-        const response = await getTransactions();
+    async ({ fType, fSearch, fPage }) => {
+        const response = await getTransactions(fType, fSearch, fPage);
         return response;
     }
 );

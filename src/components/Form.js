@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTransaction, createTransaction, removeTransaction } from '../features/transaction/transactionSlice';
+import { changeTransaction, createTransaction, editActive, removeTransaction } from '../features/transaction/transactionSlice';
 
 const Form = () => {
     const [name, setName] = useState('');
@@ -11,7 +11,7 @@ const Form = () => {
     const state = useSelector(state => state.transaction);
     const { isLoading, isError } = state;
 
-    const editing = useSelector(state => state?.transaction.editing);
+    const editing = useSelector(state => state?.transaction?.editing);
 
     useEffect(() => {
         const { id, name, type, amount } = editing || {};
@@ -62,6 +62,7 @@ const Form = () => {
 
 
     const changeEditMode = () => {
+        dispatch(editActive({}))
         setEditMode(false);
         reset();
     }

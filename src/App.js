@@ -1,16 +1,14 @@
-import Balance from "./components/Balance";
-import Form from "./components/Form";
-import Layout from "./components/Layout";
-import Transactions from "./components/Transactions";
-
+import * as React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import AllTransactions from "./pages/AllTransactions";
+import Homepage from "./pages/Homepage";
 function App() {
     return (
         <div className="App">
-            <Layout>
-                <Balance />
-                <Form />
-                <Transactions />
-            </Layout>
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/t" element={<AllTransactions />} />
+            </Routes>
         </div>
     );
 }

@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { removeTransaction } from '../features/transaction/transactionSlice';
 import { editActive } from '../features/transaction/transactionSlice';
 import numberWithCommas from '../utils/thousandSeparator/ThousandSeparator';
+import { useMatch, useNavigate } from 'react-router-dom';
+import { filterType } from '../features/filter/filterSlice';
 
 const Transaction = ({ transaction }) => {
     const dispatch = useDispatch();
@@ -14,8 +16,15 @@ const Transaction = ({ transaction }) => {
         dispatch(removeTransaction(id));
     }
 
+    const match = useMatch("/");
+    const navigate = useNavigate();
+
     const handleEdit = () => {
         dispatch(editActive(transaction))
+        dispatch(filterType('all'));
+        if (!match) {
+            navigate("/")
+        }
     }
 
     return (
