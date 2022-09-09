@@ -8,9 +8,6 @@ export const getTransactions = async (fType, fSearch, fPage) => {
     if (fSearch !== '') {
         query = query + `&q=${fSearch}`;
     }
-    if (fPage) {
-        query += `&_limit=4&_page=${fPage}`;
-    }
     const response = await axiosInstance.get(`/transactions${query}`);
     return response.data;
 }

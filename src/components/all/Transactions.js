@@ -22,8 +22,12 @@ const Transactions = () => {
     if (!isLoading && isError) {
         content = <div className="error">{error}</div>
     }
+
     if (!isLoading && !isError && transactions.length > 0) {
-        content = transactions.map((transaction, i) =>
+        const page = fPage * 2;
+        const start = page - 2;
+        const end = page;
+        content = transactions.slice(start, end).map((transaction, i) =>
             <Transaction key={i} transaction={transaction} />
         )
     }
