@@ -78,7 +78,7 @@ const transactionSlice = createSlice({
         ).addCase(changeTransaction.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isError = false;
-            state.transactions = state.transactions.map(transaction => transaction.id === action.payload.id ? action.payload : transaction);
+            state.transactions.datas = state.transactions.datas.map(transaction => transaction.id === action.payload.id ? action.payload : transaction);
         }
         ).addCase(changeTransaction.rejected, (state, action) => {
             state.isLoading = false;
@@ -92,7 +92,7 @@ const transactionSlice = createSlice({
         ).addCase(createTransaction.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isError = false;
-            state.transactions.push(action.payload);
+            state.transactions.datas.push(action.payload);
         }
         ).addCase(createTransaction.rejected, (state, action) => {
             state.isLoading = false;
@@ -106,7 +106,7 @@ const transactionSlice = createSlice({
         ).addCase(removeTransaction.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isError = false;
-            state.transactions = state.transactions.filter(transaction => transaction.id !== action.meta.arg);
+            state.transactions.datas = state.transactions.datas.filter(transaction => transaction.id !== action.meta.arg);
         }
         ).addCase(removeTransaction.rejected, (state, action) => {
             state.isLoading = false;

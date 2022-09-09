@@ -1,40 +1,142 @@
 {
   "transactions": [
     {
-      "name": "Sohag Raha",
+      "name": "1",
       "type": "income",
-      "amount": 20,
+      "amount": 1,
       "id": 1
     },
     {
-      "name": "Sohag Raha",
+      "name": "2",
       "type": "income",
-      "amount": 20,
+      "amount": 2,
       "id": 2
     },
     {
-      "name": "Sohag Raha",
+      "name": "3",
       "type": "income",
-      "amount": 20,
+      "amount": 3,
       "id": 3
     },
     {
-      "name": "asad",
-      "type": "income",
-      "amount": 20,
+      "name": "4",
+      "type": "expense",
+      "amount": 4,
       "id": 4
     },
     {
-      "name": "Sohag Raha",
+      "name": "5",
       "type": "income",
-      "amount": 200,
+      "amount": 5,
       "id": 5
     },
     {
-      "name": "asad",
-      "type": "income",
-      "amount": 20,
+      "name": "6",
+      "type": "expense",
+      "amount": 6,
       "id": 6
+    },
+    {
+      "name": "7",
+      "type": "income",
+      "amount": 7,
+      "id": 7
+    },
+    {
+      "name": "8",
+      "type": "income",
+      "amount": 8,
+      "id": 8
+    },
+    {
+      "name": "9",
+      "type": "income",
+      "amount": 9,
+      "id": 9
+    },
+    {
+      "name": "10",
+      "type": "expense",
+      "amount": 10,
+      "id": 10
+    },
+    {
+      "name": "11",
+      "type": "income",
+      "amount": 11,
+      "id": 11
+    },
+    {
+      "name": "12",
+      "type": "income",
+      "amount": 12,
+      "id": 12
+    },
+    {
+      "name": "Mobile",
+      "type": "expense",
+      "amount": 13000,
+      "id": 13
+    },
+    {
+      "name": "Salary",
+      "type": "income",
+      "amount": 24000,
+      "id": 14
+    },
+    {
+      "name": "Salary",
+      "type": "income",
+      "amount": 2200,
+      "id": 15
+    },
+    {
+      "name": "Mobile",
+      "type": "income",
+      "amount": 8000,
+      "id": 16
+    },
+    {
+      "name": "Mobile 2nd",
+      "type": "expense",
+      "amount": 11000,
+      "id": 18
+    },
+    {
+      "name": "Demo",
+      "type": "income",
+      "amount": 2400,
+      "id": 19
+    },
+    {
+      "name": "Demo 2",
+      "type": "income",
+      "amount": 987,
+      "id": 20
+    },
+    {
+      "name": "Demo 3",
+      "type": "expense",
+      "amount": 130,
+      "id": 21
+    },
+    {
+      "name": "Mobile",
+      "type": "expense",
+      "amount": 1700,
+      "id": 22
+    },
+    {
+      "name": "Demo 34",
+      "type": "income",
+      "amount": 250,
+      "id": 23
+    },
+    {
+      "name": "Salary",
+      "type": "income",
+      "amount": 100,
+      "id": 24
     }
   ]
 }

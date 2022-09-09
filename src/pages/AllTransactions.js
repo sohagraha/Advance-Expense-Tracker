@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Transactions from '../components/all/Transactions';
 import Layout from '../components/Layout';
-import { filterSearch, filterType } from '../features/filter/filterSlice';
+import Pagination from '../components/ui/Pagination';
+import { filterPage, filterSearch, filterType } from '../features/filter/filterSlice';
 import { fetchTransactions } from '../features/transaction/transactionSlice';
 
 const AllTransactions = () => {
-    const { fType, fPage } = useSelector(state => state.filter);
+    const { fType, fPage, fSearch } = useSelector(state => state.filter);
+    const [value,] = useState(fSearch);
     const dispatch = useDispatch();
     const [search, setSearch] = useState('');
     const [type, setType] = useState('all');
@@ -16,11 +18,13 @@ const AllTransactions = () => {
     useEffect(() => {
         dispatch(filterType(type));
         dispatch(filterSearch(search))
+        dispatch(filterPage(1));
     }, [dispatch, type, search])
 
 
     const handleChange = (e) => {
         setSearch((e.target.value));
+        dispatch(filterPage(1))
     }
 
     const debounce = (func, delay) => {
@@ -57,10 +61,12 @@ const AllTransactions = () => {
                         <input
                             required
                             type="radio"
-                            value="all"
+                            value={value}
                             name="type"
                             checked={type === 'all'}
-                            onChange={(e) => setType('all')}
+                            onChange={(e) => {
+                                setType('all');
+                            }}
                         />
                         <label>all</label>
                     </div>
@@ -96,6 +102,7 @@ const AllTransactions = () => {
                     />
                 </div>
                 <Transactions />
+                <Pagination />
             </Layout>
         </>
     );

@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import numberWithCommas from '../utils/thousandSeparator/ThousandSeparator';
 
 const Balance = () => {
-    const { transactions } = useSelector(state => state.transaction);
-    const total = transactions.reduce((acc, transaction) => {
+    let { datas } = useSelector(state => state.transaction.transactions);
+    datas = datas || [];
+    const total = datas.reduce((acc, transaction) => {
         if (transaction.type === 'income') {
             return acc + parseInt(transaction.amount);
         }

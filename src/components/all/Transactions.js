@@ -8,6 +8,8 @@ const Transactions = () => {
     const state = useSelector(state => state.transaction);
     const filter = useSelector(state => state.filter);
     const { transactions, isLoading, isError, error } = state;
+    let { datas } = transactions;
+    datas = datas || [];
     const { fType, fSearch, fPage } = filter;
 
     useEffect(() => {
@@ -23,11 +25,8 @@ const Transactions = () => {
         content = <div className="error">{error}</div>
     }
 
-    if (!isLoading && !isError && transactions.length > 0) {
-        const page = fPage * 2;
-        const start = page - 2;
-        const end = page;
-        content = transactions.slice(start, end).map((transaction, i) =>
+    if (!isLoading && !isError && datas.length >= 0) {
+        content = datas.map((transaction, i) =>
             <Transaction key={i} transaction={transaction} />
         )
     }

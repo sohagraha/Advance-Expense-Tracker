@@ -2,14 +2,21 @@ import axiosInstance from "../../utils/axios/axios";
 
 export const getTransactions = async (fType, fSearch, fPage) => {
     let query = '?_sort=id&_order=desc';
+
     if (fType !== 'all') {
         query = query + `&type=${fType}`;
     }
     if (fSearch !== '') {
-        query = query + `&q=${fSearch}`;
+        query = query + `&name_like=${fSearch}`;
+    }
+    if (fPage !== 0) {
+        query = query + `&_page=${fPage}&_limit=10`;
     }
     const response = await axiosInstance.get(`/transactions${query}`);
-    return response.data;
+    const datas = response.data || [];
+    const totals = response.headers["x-total-count"] || response.data.length;
+    const res = { totals, datas }
+    return res;
 }
 
 export const addTransaction = async (data) => {

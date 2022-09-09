@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
                         Home
                     </button>
                 </Link>
-                <Link to="/t">
+                <Link to="/transactions">
                     <button style={{
                         padding: '5px 10px',
                         backgroundColor: 'rgb(0, 0, 0)',

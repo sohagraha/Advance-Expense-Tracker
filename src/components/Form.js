@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTransaction, createTransaction, editActive, removeTransaction } from '../features/transaction/transactionSlice';
+import { changeTransaction, createTransaction, editActive } from '../features/transaction/transactionSlice';
 
 const Form = () => {
     const [name, setName] = useState('');
@@ -41,6 +41,7 @@ const Form = () => {
                 amount: parseInt(amount)
             }
         ))
+        // dispatch(fetchTransactions({ 'fType': 'all', 'fSearch': '', 'fPage': 0 }));
         reset();
     }
 
@@ -56,6 +57,7 @@ const Form = () => {
                 }
             }
         ))
+        dispatch(editActive({}))
         setEditMode(false);
         reset();
     }

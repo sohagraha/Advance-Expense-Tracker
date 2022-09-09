@@ -3,17 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from '../features/transaction/transactionSlice';
 import Transaction from './Transaction';
 import { Link } from 'react-router-dom';
-import { filterType } from '../features/filter/filterSlice';
+import { filterPage, filterType } from '../features/filter/filterSlice';
 
 const Transactions = () => {
     const dispatch = useDispatch();
     const state = useSelector(state => state.transaction);
     const { transactions, isLoading, isError, error } = state;
+    let { datas } = transactions;
+    datas = datas || [];
 
     useEffect(() => {
         dispatch(filterType("all"))
         dispatch(fetchTransactions({ 'fType': 'all', 'fSearch': '', 'fPage': 0 }));
-    }, [dispatch]);
+        dispatch(filterPage(1));
+    }, [dispatch, datas.length]);
 
     let content = null;
 
@@ -23,8 +26,8 @@ const Transactions = () => {
     if (!isLoading && isError) {
         content = <div className="error">{error}</div>
     }
-    if (!isLoading && !isError && transactions.length > 0) {
-        content = transactions.slice(0, 5).map((transaction, i) =>
+    if (!isLoading && !isError && datas.length > 0) {
+        content = datas.slice(0, 5).map((transaction, i) =>
             <Transaction key={i} transaction={transaction} />
         )
     }
